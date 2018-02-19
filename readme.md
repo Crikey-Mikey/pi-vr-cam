@@ -1,9 +1,17 @@
 
 # RPi VR Pan / Tilt Machine
 
+### Hardware
+- Raspberry Pi 
+- Raspberry Pi: NoIR Camera V2
+
+
+### Software
+
 | Dependency | Version                   | Description                           |
 | ---------- |:-------------------------:| -------------------------------------:|
 | Raspbian   | GNU/Linux 9.1 (stretch)   |                                       |
+| raspivid   | v1.3.12                   | Included Raspbian dist                |
 | git        | 2.11.0                    | Included Raspbian dist                |
 | nodejs     | v9.5.0                    |                                       |
 | npm        | 5.6.0                     |                                       |
@@ -27,7 +35,7 @@ git clone https://github.com/Crikey-Mikey/pi-vr-cam.git
 ```
 I just installed into users home directory for permissions simplicity
 
-### install npm packages
+### Install npm packages
 From project directory:
 ```bash
 sudo npm install

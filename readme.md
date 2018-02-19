@@ -14,24 +14,24 @@
 sudo apt-get update
 ```
 
-##### nodejs
+#### nodejs
 ```bash
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -  
 sudo apt-get install nodejs
 ```
-##### Clone repository 
+#### Clone repository 
 ```bash
 git clone https://github.com/Crikey-Mikey/pi-vr-cam.git
 ```
 I just installed into users home directory for permissions simplicity
 
-##### install npm packages
+#### install npm packages
 From project directory:
 ```bash
 sudo npm install
 ```
 
-##### Start Server
+#### Start Server
 ```bash
 npm start
 ```

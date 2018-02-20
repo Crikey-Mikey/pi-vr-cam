@@ -7,11 +7,7 @@
       body { font: 13px Helvetica, Arial; }
     </style>
   </head>
-  <body>
-    <button type="button" onclick="wsavc.playStream()">Start Video</button>
-    <button type="button" onclick="wsavc.stopStream()">Stop Video</button>
-    <br/>
-    
+  <body>    
     <!-- https://github.com/matijagaspar/ws-avc-player -->
     <script type="text/javascript" src="/vendor/WSAvcPlayer.js"></script>
     <script type="text/javascript">
@@ -23,9 +19,6 @@
       var uri = "ws://" + document.location.host;
       var wsavc = new WSAvcPlayer(canvas, "webgl", 1, 35);
       wsavc.connect(uri);
-
-      //expose instance for button callbacks
-      window.wsavc = wsavc;
 
     </script>
   </body>

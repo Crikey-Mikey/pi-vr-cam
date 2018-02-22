@@ -3,8 +3,7 @@
   <head>
     <title>piCam</title>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
+      * { margin: 0; padding: 0; }
       canvas{ height: 100vh; width: 100%; }
     </style>
   </head>
@@ -21,7 +20,6 @@
 
       function init() {
         var canvas = document.createElement("canvas");
-        var gyroData = {};
         document.body.appendChild(canvas);
 
         // Create h264 player
@@ -53,8 +51,7 @@
           })
           .catch(function(message) {
             console.error(message);
-          });
-        
+          });        
 
         // loop
         (function draw() {
@@ -62,10 +59,8 @@
             var quaternion = deviceOrientation.getScreenAdjustedQuaternion();
             sendQuaternionData( quaternion );
           }
-
           // add loop delay
           setTimeout(function(){ draw(); }, 250);
-
         })();
       }
 
@@ -76,7 +71,6 @@
 
       // Let's go...
       init();
-      
 
     </script>
   </body>

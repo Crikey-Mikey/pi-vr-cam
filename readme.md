@@ -16,7 +16,9 @@
 | nodejs     | v9.5.0                    |                                       |
 | npm        | 5.6.0                     |                                       |
 
-https://github.com/matijagaspar/ws-avc-player
+Frontend JS libraries:
+https://github.com/adtile/Full-Tilt  
+https://github.com/matijagaspar/ws-avc-player  
 
 Setup 
 ======

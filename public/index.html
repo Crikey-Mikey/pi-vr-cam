@@ -5,20 +5,78 @@
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
+      canvas{ height: 100vh; width: 100%; }
     </style>
   </head>
-  <body>    
+  <body>
+    <!-- https://github.com/adtile/Full-Tilt -->
+    <script src="vendor/fulltilt.min.js" type="text/javascript"></script>
+
     <!-- https://github.com/matijagaspar/ws-avc-player -->
     <script type="text/javascript" src="/vendor/WSAvcPlayer.js"></script>
+
     <script type="text/javascript">
+      
+      var socket;
 
-      var canvas = document.createElement("canvas");
-      document.body.appendChild(canvas);
+      function init() {
+        var canvas = document.createElement("canvas");
+        var gyroData = {};
+        document.body.appendChild(canvas);
 
-      // Create h264 player
-      var uri = "ws://" + document.location.host;
-      var wsavc = new WSAvcPlayer(canvas, "webgl", 1, 35);
-      wsavc.connect(uri);
+        // Create h264 player
+        var uri = "ws://" + document.location.host;
+        var wsavc = new WSAvcPlayer(canvas, "webgl", 1, 35);
+
+        // create websocket connection
+        socket = new WebSocket(uri);
+        socket.binaryType = "arraybuffer";
+
+        socket.onopen = function(event) {
+          console.log("Connected to " + uri);
+        };
+
+        wsavc.connect(socket);
+    
+        getQuaternionData();  
+      }
+
+      function getQuaternionData() {
+        var promise = new FULLTILT.getDeviceOrientation({ 'type' : 'world' });
+
+        var deviceOrientation;
+
+        promise
+          .then(function(controller) {
+            // Store the returned FULLTILT.DeviceOrientation object
+            deviceOrientation = controller;
+          })
+          .catch(function(message) {
+            console.error(message);
+          });
+        
+
+        // loop
+        (function draw() {
+          if (deviceOrientation) {
+            var quaternion = deviceOrientation.getScreenAdjustedQuaternion();
+            sendQuaternionData( quaternion );
+          }
+
+          // add loop delay
+          setTimeout(function(){ draw(); }, 250);
+
+        })();
+      }
+
+      function sendQuaternionData(quat) {
+        quaternionData = { x: quat.x, y: quat.y, z: quat.z, w: quat.w };
+        socket.send(JSON.stringify(quaternionData));
+      }
+
+      // Let's go...
+      init();
+      
 
     </script>
   </body>

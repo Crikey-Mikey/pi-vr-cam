@@ -60,11 +60,11 @@
             // sendQuaternionData( quaternion );
 
             var euler = deviceOrientation.getScreenAdjustedEuler();
-            sendQuaternionData( euler );
+            sendEulerData( euler );
             
           }
           // add loop delay
-          setTimeout(function(){ draw(); }, 250);
+          setTimeout(function(){ draw(); }, 400);
         })();
       }
 

@@ -19,19 +19,19 @@
       var socket;
 
       function init() {
-        var canvas = document.createElement("canvas");
+        var canvas = document.createElement('canvas');
         document.body.appendChild(canvas);
 
         // Create h264 player
-        var uri = "ws://" + document.location.host;
-        var wsavc = new WSAvcPlayer(canvas, "webgl", 1, 35);
+        var uri = 'ws://' + document.location.host;
+        var wsavc = new WSAvcPlayer(canvas, 'webgl', 1, 35);
 
         // create websocket connection
         socket = new WebSocket(uri);
-        socket.binaryType = "arraybuffer";
+        socket.binaryType = 'arraybuffer';
 
         socket.onopen = function(event) {
-          console.log("Connected to " + uri);
+          console.log('Connected to '  + uri);
         };
 
         wsavc.connect(socket);
@@ -64,7 +64,7 @@
             
           }
           // add loop delay
-          setTimeout(function(){ draw(); }, 500);
+          setTimeout(function(){ draw(); }, 200);
         })();
       }
 

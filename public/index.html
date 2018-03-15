@@ -68,10 +68,10 @@
         })();
       }
 
-      // function sendQuaternionData(quat) {
-      //   quaternionData = { x: quat.x, y: quat.y, z: quat.z, w: quat.w };
-      //   socket.send(JSON.stringify(quaternionData));
-      // }
+      function sendQuaternionData(quat) {
+        quaternionData = { x: quat.x, y: quat.y, z: quat.z, w: quat.w };
+        socket.send(JSON.stringify(quaternionData));
+      }
       function sendEulerData(euler) {
         eulerData = { alpha: euler.alpha, beta: euler.beta, gamma: euler.gamma };
         socket.send(JSON.stringify(eulerData));
